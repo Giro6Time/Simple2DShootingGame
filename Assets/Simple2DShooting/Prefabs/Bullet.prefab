@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 6764338919479309912, guid: d8ed358f74d7fca45869e50c64343a77, type: 3}
-  explosionRate: 1
+  explosionRate: 0.2
   explosionRadius: 0.08
   explosionDamage: 2
   explosionLifeTime: 0.3

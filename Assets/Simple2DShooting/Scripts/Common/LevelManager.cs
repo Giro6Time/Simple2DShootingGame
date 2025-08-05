@@ -42,6 +42,7 @@ public class LevelManager: MonoBehaviour
         LevelContext.timeFreezer.SetActive(true);
         MonoManager.Instance.AddUpdateListener(LevelContext.timeFreezer.Update);
         Time.timeScale = 1;
+        AudioManager.Instance.IsPause = false;
     }
 
     private void OnDestroy()

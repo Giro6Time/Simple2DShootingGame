@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         window.gameObject.SetActive(true);
-        Invoke(nameof(CloseWindow), 3f);
+        Invoke(nameof(CloseWindow), 2f);
     }
 
     void CloseWindow()
