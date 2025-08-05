@@ -132,11 +132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 6764338919479309912, guid: d8ed358f74d7fca45869e50c64343a77, type: 3}
-  explosionRate: 0.1
+  explosionRate: 1
   explosionRadius: 0.08
   explosionDamage: 2
   explosionLifeTime: 0.3
-  explosionScreenShakeIntensity: 0.05
+  explosionScreenShakeIntensity: 0.03
   explosionEffectPrefab: {fileID: 7605459948545129784, guid: dea9646a3e2120c42a4572cd708a1881, type: 3}
   smokePrefab: {fileID: 3432713377957219728, guid: 8ec64e1fc25e35541a56c63358689d77, type: 3}
   explosionAudio: {fileID: 8300000, guid: 99369a4b18bb6214ab475343aa69da7f, type: 3}

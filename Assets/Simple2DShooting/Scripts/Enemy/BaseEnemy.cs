@@ -119,7 +119,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     
     private void CheckPlayerInRange()
     {
-        if (player == null) return;
+        if (!player) return;
         
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         
@@ -128,11 +128,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         {
             isActive = true;
         }
-        /*// 可选：如果玩家离开更大的范围，可以让敌人停止行动
-        else if (distanceToPlayer > activationRange * 1.5f)
-        {
-            isActive = false;
-        }*/
+        
     }
     
     private bool ShouldTurn()

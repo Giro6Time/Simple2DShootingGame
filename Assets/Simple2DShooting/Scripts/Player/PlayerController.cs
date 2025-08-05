@@ -338,6 +338,7 @@ public class PlayerController : MonoBehaviour
         if (animator)
         {
             animator.SetTrigger("Death");
+            animator.SetBool(Walking, false);
         }
     }
     

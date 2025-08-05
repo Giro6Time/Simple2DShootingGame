@@ -31,7 +31,7 @@ public class MachineGunBullet : MonoBehaviour, IBullet
     private bool valid = false;
     private float _damage;
     private Vector2 _velocity;
-    
+    private bool exploded;
     public void SetProperty(Vector2 direction, float speed, float damage = 1)
     {
         _direction = direction.normalized;
@@ -62,6 +62,11 @@ public class MachineGunBullet : MonoBehaviour, IBullet
         HandleMovement();
     }
 
+    private void FixedUpdate()
+    {
+        exploded = false;
+    }
+
     void OnCollisionEnter2D(Collision2D collision) {
         /*
         TODO其实这里都应该设置成回调，通过Gun来传递具体子弹打中会有什么表现，但是这么小个Demo，不想把Gun脚本写太复杂
@@ -84,8 +89,12 @@ public class MachineGunBullet : MonoBehaviour, IBullet
             if (Random.Range(0f, 1f) < explosionRate)
             {
                 Explosion(contact.point);
-                LevelContext.CameraGO.GetComponent<CameraController>().KickBack(explosionScreenShakeIntensity,
-                    ((Vector2)PlayerContext.PlayerInstance.transform.position - contact.point).normalized);
+                if (!exploded)
+                {
+                    LevelContext.CameraGO.GetComponent<CameraController>().KickBack(explosionScreenShakeIntensity,
+                        ((Vector2)PlayerContext.PlayerInstance.transform.position - contact.point).normalized);
+                    exploded = true;
+                }
             }
             else //不爆炸才造成伤害
             {
