@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private bool shootInput;
     private bool shot = false;
     private CameraController cameraController;
+    private static readonly int Walking = Animator.StringToHash("Walking");
 
     void Start()
     {
@@ -250,6 +251,16 @@ public class PlayerController : MonoBehaviour
     {
         // 水平移动
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        if (Mathf.Abs(horizontalInput) < 0.001)
+        {
+            if(animator)
+                animator.SetBool(Walking, false);
+        }
+        else
+        {
+            if(animator)
+                animator.SetBool(Walking, true);
+        }
         if(shootInput)
             return;
         var eulerAngles = transform.eulerAngles;
@@ -258,12 +269,14 @@ public class PlayerController : MonoBehaviour
             eulerAngles.y = 0;
             transform.eulerAngles = eulerAngles;
             PlayerContext.Forward = Direction.Right;
+           
         }
         else if (horizontalInput < 0)
         {
             eulerAngles.y = 180;
             transform.eulerAngles = eulerAngles;
             PlayerContext.Forward = Direction.Left;
+        
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
